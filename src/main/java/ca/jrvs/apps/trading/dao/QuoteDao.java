@@ -2,47 +2,42 @@ package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.dto.Quote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
-public class QuoteDao implements CrudRepository<Quote, String>{
-
-    private static final String TABLE_NAME = "quote";
-    private static final String ID_NAME = "ticker";
-    private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcInsert simpleJdbcInsert;
+public class QuoteDao extends JdbcCrudDao<Quote, String> {
 
     @Autowired
     public QuoteDao(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate(dataSource);
-        simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName(TABLE_NAME);
+        super(dataSource, "quote", "ticker", Quote.class, false);
     }
 
-    @Override
-    public Quote save(Quote entity) {
-        SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(entity);
-        simpleJdbcInsert.execute(parameterSource);
-        return entity;
+    public List<Quote> findAll() {
+        String sql = "SELECT * FROM " + TableName;
+        List<Quote> quotes = jdbcTemplate.query(sql,
+                new BeanPropertyRowMapper(Quote.class));
+        return quotes;
     }
 
-    @Override
-    public Quote findById(String s) {
-        return null;
+    public List<String> returnAllTickers() {
+        List<Quote> quotes = findAll();
+        List<String> tickersList = new ArrayList<>();
+        for (Quote quote : quotes) {
+            tickersList.add(quote.getTicker());
+        }
+        return tickersList;
     }
 
-    @Override
-    public boolean existsById(String s) {
-        return false;
+    public void update(List<Quote> quotes) {
+        for (Quote quote : quotes) {
+            deleteById(quote.getTicker());
+            save(quote);
+        }
     }
 
-    @Override
-    public void deleteById(String s) {
-
-    }
 }
