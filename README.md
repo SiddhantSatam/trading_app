@@ -65,9 +65,7 @@ $ source ~/.bash_profile
 </ul>
 <h2 id="architecture">Architecture</h2>
 <ul>
-<li>
 <img src="/src/assets/images/trading_readme_arch.jpg" alt="Arc"></p>
-</li>
 <li>
 <p><strong>Controller</strong>  - This layer is what the user interact with. Together with Swagger UI, the function of this layer is to invoke the service layer (in most cases) based on the input from the user. The request is translated and the response is retrieved back to this layer where it is shown to user in JSON format.</p>
 </li>
