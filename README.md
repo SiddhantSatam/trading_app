@@ -1,9 +1,9 @@
 <h1>Trading REST API</h1>
-<h1 id="introduction">Introduction</h1>
+<h2 id="introduction">Introduction</h2>
 <p>This trading application is an online stock trading simulation REST API which can be used to create an account which would allow account holder to buy and sell stocks from Investor Exchange i.e IEX. Traders can withdraw money and/or deposit money into their account. They can also view latest quotes of any stock directly from this application.</p>
 <p>This REST API can be used by front-end developers, mobile-app developers, and traders.</p>
 <p>The architecture used here is based on microservices concept which is implemented using SpringBoot, IEX API and PSQL database.</p>
-<h1 id="quick-start">Quick Start</h1>
+<h2 id="quick-start">Quick Start</h2>
 <p>CentOS 7, Docker and Java are to be installed prior to use this REST API.</p>
 <h2 id="initial-setup">Initial Setup</h2>
 <p>Create an account on <a href="https://iexcloud.io/">https://iexcloud.io</a>  and get your iex_public_token</p>
@@ -90,10 +90,9 @@ $ source ~/.bash_profile
 <h2 id="improvements">Improvements</h2>
 <ul>
 <li>We can integrate other APIs like Twilio API to send real-time alerts to the consumers via free text messaging</li>
-<li>We have assumed that trader and account has one-one to relation. This can be improved by allowing trader to have multiple accounts.</li>
 <li>Auto-increament ids once deleted can not be re-used. In some cases, it can be re-used in future implementation.</li>
 <li>Auto-updation of dailylist is possible and can be implemented in future.</li>
-<li>Email/sms alert can be set e.g when the price of specific security is changed.</li>
+<li>We have assumed that trader and account has one-one to relation. This can be improved by allowing trader to have multiple accounts.</li>
 <li>Once the market is closed, a trader can not trade in stocks. This can be improved by saving the quote  just before the market closes and used that to allow trader to trade and immediately execute their request when the market re-opens.</li>
 </ul>
 
