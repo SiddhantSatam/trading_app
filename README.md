@@ -1,3 +1,4 @@
+<h1>Trading REST API</h1>
 <h1 id="introduction">Introduction</h1>
 <p>This trading application is an online stock trading simulation REST API which can be used to create an account which would allow account holder to buy and sell stocks from Investor Exchange i.e IEX. Traders can withdraw money and/or deposit money into their account. They can also view latest quotes of any stock directly from this application.</p>
 <p>This REST API can be used by front-end developers, mobile-app developers, and traders.</p>
