@@ -89,6 +89,7 @@ $ source ~/.bash_profile
 </ul>
 <h2 id="improvements">Improvements</h2>
 <ul>
+<li>We can integrate other APIs like Twilio API to send real-time alerts to the consumers via free text messaging</li>
 <li>We have assumed that trader and account has one-one to relation. This can be improved by allowing trader to have multiple accounts.</li>
 <li>Auto-increament ids once deleted can not be re-used. In some cases, it can be re-used in future implementation.</li>
 <li>Auto-updation of dailylist is possible and can be implemented in future.</li>
