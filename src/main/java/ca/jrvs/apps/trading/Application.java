@@ -2,6 +2,8 @@ package ca.jrvs.apps.trading;
 
 import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.service.QuoteService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -16,10 +18,9 @@ import java.util.List;
 
 @SpringBootApplication(exclude = {JdbcTemplateAutoConfiguration.class, DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class Application implements CommandLineRunner {
-
     @Autowired
     private MarketDataDao marketDataDao;
-
+    private Logger logger = LoggerFactory.getLogger((Application.class));
     @Autowired
     private DataSource dataSource;
 
@@ -34,11 +35,13 @@ public class Application implements CommandLineRunner {
 
     public static void main(String[] args) throws Exception {
         SpringApplication app = new SpringApplication(Application.class);
+
+        //Turn off web
         app.run(args);
+
     }
 
     @Override
     public void run(String... args) throws Exception {
-
     }
 }
