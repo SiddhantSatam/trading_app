@@ -19,7 +19,7 @@ $ source ~/.bash_profile
 <li>Start docker<br>
 <code>sudo systemctl start docker</code></li>
 <li>Download the source code.<br>
-<code>https://github.com/saud-aslam/trading-app.git</code></li>
+<code>https://github.com/SiddhantSatam/trading_app.git</code></li>
 <li>Build trading app<br>
 <code>sudo docker build -t trading-app .</code></li>
 <li>Build psql image<br>
